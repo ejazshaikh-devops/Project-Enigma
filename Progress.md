@@ -1,347 +1,310 @@
-<h1>GuardAI (Project Enigma) — Technical Overview</h1>
-<h2>Project Type</h2>
-<br>
-Browser-based AI-assisted phishing and scam detection platform.
-Current implementation is a Chrome Extension prototype built using Manifest V3 architecture. The project is designed to evolve into a full cybersecurity platform with browser protection, threat intelligence collection, analytics, and AI-driven phishing detection.
+# GuardAI — Development Progress Report
 
-<h2>Current Development Stage</h2>
-<br>
-<h3>Prototype Status</h3>
-<br>
-Early-stage working prototype.
+## Project Overview
 
-<br>
-<h3>Approximate maturity</h3>
-<br>
-* Prototype readiness: 3/10
-<br>
-* Production readiness: 1.5/10
-<br>
-* Architecture quality: moderate
-<br>
-* Scalability readiness: low but expandable
-<br>
+GuardAI is an AI-assisted phishing and scam detection platform currently being developed as a browser security ecosystem.
 
-<h3>The current version demonstrates</h3>
-<br>
-* live browser monitoring
-<br>
-* phishing heuristic detection
-<br>
-* suspicious form detection
-<br>
-* extension-based architecture
-<br>
-* modular frontend logic
-<br>
+The project began as a Chrome Extension prototype and is progressively evolving into a scalable cybersecurity platform with:
 
-<h3>The project is not production-ready yet and currently lacks</h3>
+* browser-level phishing protection
+* threat intelligence infrastructure
+* AI-powered detection systems
+* telemetry analytics
+* cloud-native deployment architecture
 
-* backend infrastructure
-* ML threat intelligence
-* telemetry pipelines
-* cloud analytics
-* large-scale threat databases
-* real-world validation metrics
+---
 
-<h2>High-Level Vision</h2>
+# Current Development Stage
 
-<h3>The long-term objective of GuardAI is to become</h3>
+## Overall Progress
 
-<h4>An AI-powered browser security platform focused on phishing prevention, scam detection, suspicious website analysis, and localized cybersecurity intelligence for Indian internet users.
-Future architecture will include</h4>
-<br>
-* browser extension
-<br>
-* backend threat intelligence platform
-<br>
-* machine learning pipeline
-<br>
-* live analytics dashboard
-<br>
-* real-time malicious domain database
-<br>
-* crowdsourced threat reporting
-<br>
-* enterprise APIs
-<br>
+Current estimated maturity:
 
-<h2>Current Technology Stack</h2>
-<h3></h3>Frontend / Extension</
-* JavaScript
-<br>
-* HTML
-<br>
-* CSS
-<br>
-* Chrome Extension APIs
-<br>
-* Manifest V3
-<br>
+| Category             | Status             |
+| -------------------- | ------------------ |
+| Prototype Readiness  | Advanced Prototype |
+| Production Readiness | Early Stage        |
+| Architecture Quality | Moderate to Strong |
+| Cloud Readiness      | In Progress        |
+| Investor Readiness   | Early Pre-Seed     |
 
-<h3>Planned Backend</h3>
+Current estimated overall maturity:
 
-* FastAPI (Python)
-  <br>
-* PostgreSQL
-  <br>
-* Redis
-  <br>
-* Docker
-  <brt>
-* Nginx
-  <br>
-  
-<h3>Planned ML Stack</h3>
-* Python
-<br>
-* Scikit-learn
-<br>
-* XGBoost
-<br>
-* Pandas
-<br>
-* NumPy
+> 4.5 / 10
 
-<h2>Current Project Structure</h2>
+---
 
-    guardai-final/
-    │
-    ├── extension/
-    │   
-    │   ├── background/
-    │   │   └── worker.js
-    │   │
-    │   ├── content/
-    │   │   ├── detector.js
-    │   │   └── formWatcher.js
-    │   │
-    │   ├── popup/
-    │   │   ├── popup.html
-    │   │   └── popup.js
-    │   │
-    │   ├── icons/
-    │   │
-    │   └── manifest.json
-    │
-    └── README / supporting files
+# Architecture Evolution
 
-<h3>Architecture Explanation</h3>
-<h4>1. manifest.json</h4>
-<br>
-Purpose: Defines the Chrome extension configuration.
-<br>
+## Initial Version
 
-<h4>Responsibilities</h4>
-* permissions
-<br>
-* content script injection
-<br>
-* background worker registration
-<br>
-* popup registration
-<br>
-* extension metadata
-<br>
-* security policies
-<br>
-<h5>Current Role: Acts as the central configuration entry point for the extension.</h5>
+The project originally started as:
 
-<h3>2. Background Layer</h3>
-<h4>File</h4>
-<br>
-background/worker.js
-<br>
-Purpose: Runs as the extension’s persistent background service worker.
-<h4></h4>Responsibilities:
+* a simple Chrome extension
+* heuristic phishing detection
+* local browser-side analysis
 
-* event handling
-  <br>
-* extension lifecycle management
-  <br>
-* communication handling
-  <br>
-* future telemetry syncing
-  <br.
-* future API communication
-  <br.
-<h5>Current Status: Basic event architecture exists but requires refactoring for scalability and security.</h5>
+---
 
-<h3>3. Content Scripts</h3>
-<br>
-detector.js
-<br>
-Purpose: Primary phishing and scam detection logic.
-<h4></h4>Responsibilities
+## Current Architecture
 
-* page inspection
-  <br>
-* suspicious URL checks
-  <br>
-* phishing heuristics
-  <br>
-* content analysis
-  <br>
-* risk evaluation
-  <br.
-<h5>Current Detection Approach: Mostly heuristic-based.</h5>
-<h5></h5>Examples:
+The project now includes:
 
-* suspicious keywords
-* login form analysis
-* URL structure checks
-* deceptive page patterns
-  
-<h6>Limitations</h6>
+* modular extension architecture
+* backend service foundation
+* Dockerized infrastructure
+* Kubernetes deployment manifests
+* staging overlays
+* API structure separation
+* testing setup
+* cloud deployment preparation
 
-* no machine learning
-* no live threat feeds
-* no external reputation lookup
-* limited contextual intelligence
+---
 
-<h5>formWatcher.js</h5>
-Purpose: Monitors webpage forms for suspicious behavior.
-<h6></h6>Responsibilities:
+# Current Project Structure
 
-* password form observation
-* hidden field detection
-* risky input behavior analysis
-* credential collection indicators
-<h5>Importance: This module is critical because phishing attacks commonly target credential forms.<h5></h5>
+```bash
+guardai/
+│
+├── extension/
+│   ├── background/
+│   ├── content/
+│   ├── popup/
+│   ├── core/
+│   ├── utils/
+│   └── manifest.json
+│
+├── backend/
+│   ├── app/
+│   │   ├── api/
+│   │   ├── core/
+│   │   ├── services/
+│   │   └── models/
+│   │
+│   └── tests/
+│
+├── infra/
+│   ├── aws/
+│   └── k8s/
+│       ├── base/
+│       └── overlays/
+│           └── staging/
+│
+├── docker-compose.yml
+├── README.md
+└── requirements.txt
+```
 
-<h3>4. Popup UI</h3>
-popup.html
-Purpose: Frontend UI shown when user clicks the extension icon.
-<h4></h4>Displays:
+---
 
-* extension status
-* threat detection summaries
-* risk notifications
-* future analytics
+# Completed Phases
 
-<h4>popup.js<h4></h4>
-Purpose: Controls popup interactions and UI logic.
-<h4></h4>Responsibilities:
-  
-* render detection data
-* communicate with background worker
-* display warning states
-* future telemetry summaries
+# Phase 1 — Foundation Architecture 
 
-<h2>Current Detection Workflow<h2></h2>
+### Completed
 
-    User opens website
-             ↓
-    Content scripts inject into page
-             ↓
-    detector.js scans:
-          - URL
-          - forms
-          - suspicious patterns
-             ↓
-    Risk score generated
-             ↓
-    Popup UI displays result
-             ↓
-    Future:
-    Threat sent to backend analytics
+* Manifest V3 setup
+* Modular extension structure
+* Background worker implementation
+* Content script separation
+* Popup UI integration
+* Utility layer initialization
+* Centralized configuration
+* Logging system
+* Internal messaging system
 
-<h2>Current Strengths<h2></h2>
-  
-1. Real Working Prototype
-The extension is operational and not just conceptual.
-<br>
-  
-2. Correct Base Architecture
-Manifest V3 and modular content/background separation were chosen correctly.
-<br>
+### Outcome
 
-3. Security-Oriented Design Direction
-The project already focuses on:
+Created scalable browser extension foundation.
 
-* phishing prevention
-* suspicious form monitoring
-* browser-level protection
+---
 
-4. Expandable Foundation
-The current structure can evolve into:
+# Phase 2 — Detection Prototype 
 
-* AI-based detection
-* cloud analytics
-* enterprise threat intelligence
+### Completed
 
-<h2>Current Weaknesses</h2>
+* heuristic phishing detection
+* suspicious keyword analysis
+* URL pattern analysis
+* suspicious TLD checks
+* IP-based URL detection
+* basic risk scoring engine
+* form monitoring logic
 
-1. No Backend
-No centralized threat intelligence or telemetry currently exists.
+### Outcome
 
-2. No ML Detection
-Detection is heuristic-only and cannot provide measurable AI accuracy yet.
+Created functional phishing detection prototype.
 
-3. No Data Pipeline
-No real phishing datasets integrated.
+---
 
-4. No Threat Intelligence Layer
-No malicious domain feeds or reputation systems yet.
+# Phase 3 — Backend + Infrastructure Foundation Partial
 
-5. No User Analytics
-No installs, telemetry, or detection metrics exist yet.
+### Completed
 
-<h2>Planned Future Architecture<h2></h2>
+* FastAPI backend initialization
+* service-oriented backend structure
+* Docker integration
+* Kubernetes manifests
+* Kustomize overlays
+* staging environment setup
+* initial testing framework
+* AWS deployment preparation
 
-    Chrome Extension
-        ↓
-    FastAPI Backend
-        ↓
-    Threat Intelligence Engine
-        ↓
-    ML Detection System
-        ↓
-    Analytics Dashboard
-        ↓
-    Threat Database
+### Outcome
 
-<h1>Planned Core Features</h1>
-<h2></h2>Browser Protection
+Transitioned from standalone extension into platform architecture.
+
+---
+
+# Current Technical Strengths
+
+## Browser Extension Architecture
+
+* Manifest V3 compatible
+* modular detection system
+* scalable code organization
+
+---
+
+## Backend Foundation
+
+* clean service structure
+* API separation
+* future scalability support
+
+---
+
+## DevOps Foundation
+
+* Dockerized setup
+* Kubernetes manifests
+* staging overlays
+* infrastructure separation
+
+---
+
+## Security-Oriented Design
+
+Focused on:
 
 * phishing detection
-* scam prevention
-* malicious form monitoring
-  
-<h3>AI Detection</h3>
+* suspicious form analysis
+* malicious URL analysis
+* browser-level protection
 
-* phishing classification
-* suspicious language analysis
-* behavioral threat analysis
+---
 
-<h3></h3>Threat Intelligence
+# Current Limitations
 
+## Missing Threat Intelligence Layer
+
+No centralized malicious domain intelligence yet.
+
+---
+
+## Missing ML Detection
+
+Detection currently relies primarily on heuristics.
+
+---
+
+## Missing Telemetry Pipeline
+
+No large-scale event collection or analytics yet.
+
+---
+
+## Missing Production Security Hardening
+
+Still requires:
+
+* authentication
+* rate limiting
+* secure telemetry validation
+* CSP hardening
+* anti-abuse mechanisms
+
+---
+
+## Missing Real User Validation
+
+No public user metrics currently exist.
+
+---
+
+# Upcoming Roadmap
+
+# Phase 4 — Threat Intelligence Engine
+
+Planned:
+
+* centralized reputation system
 * malicious domain database
-* crowdsourced reporting
 * live threat feeds
+* telemetry ingestion
+* URL reputation APIs
 
-<h3>Analytics</h3>
+---
 
+# Phase 5 — ML Detection Layer
+
+Planned:
+
+* phishing classification models
+* dataset integration
+* feature extraction pipelines
+* model inference APIs
+
+---
+
+# Phase 6 — Telemetry + Analytics
+
+Planned:
+
+* analytics dashboard
 * detection statistics
-* active threats
-* attack heatmaps
-* telemetry dashboards
+* active threat visualization
+* operational metrics
 
-<h1>Development Philosophy</h1>
-<h2></h2>The project is intentionally being developed in phases:
+---
 
-1. stable architecture
-2. reliable detection
-3. backend infrastructure
-4. ML integration
-5. analytics
-6. production deployment
-7. investor readiness
+# Phase 7 — Production Hardening
 
-<h3>The focus is on</h3>
+Planned:
 
-* engineering quality
-* scalability
-* measurable security performance
-* real-world usability
-<h4></h4>rather than rapidly shipping incomplete features.
+* security hardening
+* monitoring
+* scalability optimization
+* CI/CD improvements
+
+---
+
+# Long-Term Vision
+
+GuardAI aims to evolve into:
+
+> A scalable AI-powered cybersecurity platform focused on phishing prevention, scam detection, and browser-level threat intelligence.
+
+Long-term objectives include:
+
+* AI-driven threat analysis
+* real-time phishing intelligence
+* crowdsourced threat detection
+* enterprise APIs
+* browser-native protection systems
+
+---
+
+# Development Philosophy
+
+The project is being developed with emphasis on:
+
+* scalable architecture
+* maintainable engineering
+* cloud-native infrastructure
+* security-first design
+* gradual production hardening
+* measurable technical growth
+
+The focus is on building strong engineering foundations before scaling features or pursuing investor outreach.
+

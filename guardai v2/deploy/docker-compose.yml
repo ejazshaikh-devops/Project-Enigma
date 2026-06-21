@@ -1,0 +1,39 @@
+# GuardAI — docker-compose for single EC2 instance deployment
+#
+# Usage:
+#   1. cp ../../backend/.env.example guardai.env  (fill in real values)
+#   2. Set IMAGE_URI below to your ECR image, or run `docker compose build`
+#      to build from the local backend/ directory instead
+#   3. docker compose up -d
+#
+# Resource limits below are tuned for a t3.small (2 vCPU / 2GB RAM).
+# Adjust `mem_limit` and `GUNICORN_WORKERS` together if using a different
+# instance size — see the comment in backend/Dockerfile.
+
+services:
+  guardai-backend:
+    image: ${IMAGE_URI:-guardai-backend:latest}
+    build:
+      context: ../../backend
+    container_name: guardai-backend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"   # bound to localhost only — nginx is the public-facing layer
+    env_file:
+      - guardai.env
+    environment:
+      - GUNICORN_WORKERS=2
+    mem_limit: 768m
+    mem_reservation: 384m
+    cpus: 1.5
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0) if urllib.request.urlopen('http://localhost:8000/v1/health/live', timeout=3).status==200 else sys.exit(1)"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

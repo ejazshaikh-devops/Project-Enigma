@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>GuardAI</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+
+<div class="header">
+  <span class="logo" aria-hidden="true">🛡️</span>
+  <span class="brand">GuardAI</span>
+  <span class="version" id="ext-version">v0.2</span>
+</div>
+
+<main>
+  <!-- Status Card -->
+  <div class="card" id="card" role="status" aria-live="polite">
+    <div class="icon" id="icon" aria-hidden="true">🔍</div>
+    <div class="card-body">
+      <div class="verdict-label" id="title">Scanning…</div>
+      <div class="verdict-sub"   id="sub">Checking this page</div>
+      <div class="confidence"    id="confidence-line"></div>
+    </div>
+  </div>
+
+  <!-- Risk Bar -->
+  <div id="score-wrap" class="score-wrap hide">
+    <div class="score-header">
+      <span class="score-lbl">Risk score</span>
+      <span class="score-val" id="score-pct">0/100</span>
+    </div>
+    <div class="track" role="progressbar" aria-label="Risk score" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+      <div class="fill" id="fill" style="width:0%"></div>
+    </div>
+    <div class="source-row">
+      <span class="source-lbl">Analysis by</span>
+      <span class="source-val" id="source-val">—</span>
+    </div>
+  </div>
+
+  <!-- Threat Intel Badges -->
+  <div id="ti-wrap" class="ti-wrap hide">
+    <div class="section-lbl">⚠ Threat intelligence</div>
+    <ul class="ti-list" id="ti-list"></ul>
+  </div>
+
+  <!-- Reasons (Explainable AI) -->
+  <div id="reasons-wrap" class="reasons-wrap hide">
+    <div class="section-lbl">Why was this flagged?</div>
+    <ul class="reasons-list" id="reasons-list"></ul>
+  </div>
+
+  <!-- Triggered Rules -->
+  <div id="flags-wrap" class="flags-wrap hide">
+    <div class="section-lbl">Detection signals</div>
+    <ul class="flags-list" id="flags-list"></ul>
+  </div>
+
+  <!-- URL Display -->
+  <div class="url-row">
+    <span class="url-lbl">Page:</span>
+    <span class="url-val" id="url-val">—</span>
+  </div>
+</main>
+
+<footer>
+  <span>GuardAI v0.2 · Privacy-first protection</span>
+  <a href="https://guardai.io/privacy" target="_blank" rel="noopener noreferrer" class="footer-link">Privacy</a>
+</footer>
+
+<script src="popup.js"></script>
+</body>
+</html>

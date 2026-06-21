@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "GuardAI – Phishing & Scam Detector",
+  "version": "0.2.0",
+  "description": "Real-time AI-powered protection against phishing, brand impersonation, and scam pages.",
+
+  "permissions": [
+    "tabs",
+    "webNavigation",
+    "storage",
+    "alarms"
+  ],
+
+  "host_permissions": [
+    "https://api.yourdomain.com/*"
+  ],
+
+  "background": {
+    "service_worker": "background/worker.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://*/*", "http://*/*"],
+      "js": ["content/detector.js", "content/formWatcher.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "GuardAI Security"
+  },
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+
+  "content_security_policy": {
+    "extension_pages": "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src https://api.yourdomain.com; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none';"
+  },
+
+  "web_accessible_resources": [],
+
+  "minimum_chrome_version": "116"
+}

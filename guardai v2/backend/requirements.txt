@@ -1,0 +1,20 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2
+aiohttp==3.10.5
+python-dotenv==1.0.1
+numpy==2.1.1
+
+# Pre-trained phishing classifier (ml/pretrained_predict.py).
+# The model file itself isn't included — run `python3 -m ml.download_pretrained_model`
+# once (needs internet access) to fetch it. onnxruntime is needed at runtime
+# regardless so the backend can load it if present; if you never download
+# the model, this dependency is simply unused (the code checks for the
+# file's existence and skips gracefully).
+onnxruntime==1.19.2
+
+# Optional — only required if REDIS_URL is set for multi-instance caching/rate-limiting
+redis==5.0.8
+
+# Production ASGI server process management
+gunicorn==23.0.0

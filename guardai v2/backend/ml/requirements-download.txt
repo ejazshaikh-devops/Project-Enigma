@@ -1,0 +1,8 @@
+# GuardAI ML — Download-time dependencies
+#
+# Only needed to RUN ml/download_pretrained_model.py once. Not required
+# for the backend's normal runtime (that's covered by requirements.txt).
+#
+# Install with: pip install -r ml/requirements-download.txt --break-system-packages
+
+huggingface_hub==0.25.1
